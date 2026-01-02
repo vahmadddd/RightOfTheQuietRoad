@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://brp7kpcfssq4c"]
+
+[ext_resource type="Texture2D" uid="uid://cj6nlbxkpec7k" path="res://download (4).png" id="1_o4j5u"]
+[ext_resource type="PackedScene" uid="uid://bjbi36jcc8t7i" path="res://Derek.tscn" id="2_17s1h"]
+[ext_resource type="Texture2D" uid="uid://fvkefaisc8uw" path="res://templ.PNG" id="2_h7tli"]
+[ext_resource type="PackedScene" uid="uid://cq0b0057gaf03" path="res://scene_transition.tscn" id="4_h7tli"]
+[ext_resource type="PackedScene" uid="uid://b1umcl53mumw" path="res://Street.tscn" id="5_f7872"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7tli"]
+size = Vector2(162.84065, 1334.1047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7872"]
+size = Vector2(1197.75, 150.5)
+
+[node name="Poarch" type="Node2D"]
+
+[node name="Hallway" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(45, 231.99998)
+scale = Vector2(0.6, 0.66)
+texture = ExtResource("1_o4j5u")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Hallway"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(-1029.6019, 53.388245)
+scale = Vector2(0.9999997, 0.99999976)
+shape = SubResource("RectangleShape2D_h7tli")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(1010.03705, 13.347092)
+scale = Vector2(0.9999993, 0.9999995)
+shape = SubResource("RectangleShape2D_h7tli")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(6.540039, 339.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(59.58496, 234.5)
+shape = SubResource("RectangleShape2D_f7872")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+visible = false
+offset_left = -460.0
+offset_top = 171.0
+offset_right = 704.0
+offset_bottom = 234.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Templ" type="Sprite2D" parent="Floor"]
+position = Vector2(30.45996, -315.75)
+texture = ExtResource("2_h7tli")
+
+[node name="Derek" parent="." instance=ExtResource("2_17s1h")]
+position = Vector2(-415, 409)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(44, 268)
+
+[node name="SceneTransition" parent="." instance=ExtResource("4_h7tli")]
+visible = false
+position = Vector2(-253.99991, 206)
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+target_scene = ExtResource("5_f7872")

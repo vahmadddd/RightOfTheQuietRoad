@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://d32m6emiietwb"]
+
+[ext_resource type="Script" uid="uid://b1jv3qav2o7g0" path="res://inventory_ui.gd" id="1_dsn3v"]
+[ext_resource type="Texture2D" uid="uid://b2qjrkn4kp557" path="res://messages/backpack.png" id="2_cgsp4"]
+[ext_resource type="Texture2D" uid="uid://2h0i5knankes" path="res://messages/backpack_label-removebg-preview.png" id="2_ictmd"]
+
+[node name="InventoryUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_dsn3v")
+
+[node name="Background" type="ColorRect" parent="CanvasLayer"]
+offset_left = 301.0
+offset_top = 172.0
+offset_right = 860.0
+offset_bottom = 547.0
+color = Color(0.2901961, 0.12156863, 0, 0.34117648)
+metadata/_edit_use_anchors_ = true
+
+[node name="Backpack" type="Sprite2D" parent="CanvasLayer/Background"]
+position = Vector2(42, 43)
+scale = Vector2(0.154, 0.136)
+texture = ExtResource("2_cgsp4")
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/Background"]
+layout_mode = 0
+offset_left = 157.0
+offset_top = 133.0
+offset_right = 400.0
+offset_bottom = 165.0
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="BackpackLabelRemovebgPreview" type="Sprite2D" parent="CanvasLayer/Background"]
+position = Vector2(295, 98)
+scale = Vector2(0.5654397, 0.5756972)
+texture = ExtResource("2_ictmd")

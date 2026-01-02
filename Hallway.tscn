@@ -1,0 +1,90 @@
+[gd_scene load_steps=10 format=3 uid="uid://cg7c78kxt6wy3"]
+
+[ext_resource type="Texture2D" uid="uid://dogx3qdlf4rk1" path="res://download (1).png" id="1_mmbvc"]
+[ext_resource type="PackedScene" uid="uid://bjbi36jcc8t7i" path="res://Derek.tscn" id="2_eparc"]
+[ext_resource type="PackedScene" uid="uid://cq0b0057gaf03" path="res://scene_transition.tscn" id="3_3f1kj"]
+[ext_resource type="Script" uid="uid://d2x8a328pj72r" path="res://dialogue_box.gd" id="5_2v7yy"]
+[ext_resource type="PackedScene" uid="uid://b1c2m67q5tvxr" path="res://Lounge.tscn" id="5_d2gxj"]
+[ext_resource type="Texture2D" uid="uid://rgh5ckyuxkko" path="res://messages/label1-removebg-preview.png" id="6_eparc"]
+
+[sub_resource type="GDScript" id="GDScript_g0t6i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1acc2"]
+size = Vector2(162.84065, 1334.1047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0t6i"]
+size = Vector2(775.5, 61)
+
+[node name="Hallway" type="Node2D"]
+script = SubResource("GDScript_g0t6i")
+
+[node name="Hallway" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(52.999985, 260)
+scale = Vector2(0.40889588, 0.44953704)
+texture = ExtResource("1_mmbvc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Hallway"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(-1029.6019, 53.388245)
+scale = Vector2(0.9999997, 0.99999976)
+shape = SubResource("RectangleShape2D_1acc2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(1010.03705, 13.347092)
+scale = Vector2(0.9999993, 0.9999995)
+shape = SubResource("RectangleShape2D_1acc2")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(15, 359)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(40.25, 123)
+shape = SubResource("RectangleShape2D_g0t6i")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+visible = false
+offset_left = -460.0
+offset_top = 171.0
+offset_right = 704.0
+offset_bottom = 234.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Derek" parent="." instance=ExtResource("2_eparc")]
+position = Vector2(-261, 377)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="UI"]
+visible = false
+offset_left = 56.0
+offset_top = 400.0
+offset_right = 726.0
+offset_bottom = 541.0
+script = ExtResource("5_2v7yy")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDisplay" type="RichTextLabel" parent="UI/DialogueBox"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 654.0
+offset_bottom = 140.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(59, 255)
+zoom = Vector2(1.49, 1.49)
+
+[node name="SceneTransition" parent="." instance=ExtResource("3_3f1kj")]
+visible = false
+position = Vector2(245.99998, 149)
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+target_scene = ExtResource("5_d2gxj")
+
+[node name="Label1RemovebgPreview" type="Sprite2D" parent="."]
+position = Vector2(340, 140)
+scale = Vector2(0.408, 0.3880597)
+texture = ExtResource("6_eparc")

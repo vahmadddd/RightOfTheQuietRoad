@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqml48d5esxj3"]
+
+[ext_resource type="Texture2D" uid="uid://cuy28brjewxkb" path="res://download (6).png" id="1_qovcn"]
+[ext_resource type="PackedScene" uid="uid://bjbi36jcc8t7i" path="res://Derek.tscn" id="2_bjt3j"]
+[ext_resource type="Texture2D" uid="uid://cwjahqmw4tfpl" path="res://sprites/jump/image-removebg-preview (5).png" id="2_csjh3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csjh3"]
+size = Vector2(162.84065, 1334.1047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ogaj"]
+size = Vector2(3837, 150.5)
+
+[node name="QuietRoad" type="Node2D"]
+
+[node name="Hallway" type="Sprite2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+position = Vector2(-509, 462)
+scale = Vector2(2, 2.2)
+texture = ExtResource("1_qovcn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Hallway"]
+position = Vector2(-21, 30.454552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(-1029.6019, 53.388245)
+scale = Vector2(0.9999997, 0.99999976)
+shape = SubResource("RectangleShape2D_csjh3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(1010.03705, 13.347092)
+scale = Vector2(0.9999993, 0.9999995)
+shape = SubResource("RectangleShape2D_csjh3")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(6.540039, 339.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(-557.54004, 617.25)
+shape = SubResource("RectangleShape2D_3ogaj")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+visible = false
+offset_left = -460.0
+offset_top = 171.0
+offset_right = 704.0
+offset_bottom = 234.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Derek" parent="." instance=ExtResource("2_bjt3j")]
+position = Vector2(-2434, 776)
+
+[node name="ImageRemovebgPreview(5)" type="Sprite2D" parent="."]
+position = Vector2(-1997, 558.5625)
+scale = Vector2(2.720803, 2.5502412)
+texture = ExtResource("2_csjh3")
+
+[node name="ImageRemovebgPreview(5)2" type="Sprite2D" parent="."]
+position = Vector2(-1361, 561)
+scale = Vector2(2.720803, 2.5502412)
+texture = ExtResource("2_csjh3")
+
+[node name="ImageRemovebgPreview(5)3" type="Sprite2D" parent="."]
+position = Vector2(-39.999878, 564)
+scale = Vector2(2.720803, 2.5502412)
+texture = ExtResource("2_csjh3")
+
+[node name="ImageRemovebgPreview(5)4" type="Sprite2D" parent="."]
+position = Vector2(504, 565)
+scale = Vector2(2.720803, 2.5502412)
+texture = ExtResource("2_csjh3")
+
+[node name="ImageRemovebgPreview(5)5" type="Sprite2D" parent="."]
+position = Vector2(1194, 559)
+scale = Vector2(2.720803, 2.5502412)
+texture = ExtResource("2_csjh3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-525, 476)
+zoom = Vector2(0.3, 0.3)

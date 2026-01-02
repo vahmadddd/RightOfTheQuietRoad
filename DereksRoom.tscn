@@ -1,0 +1,170 @@
+[gd_scene load_steps=18 format=3 uid="uid://fqd1et4od0wp"]
+
+[ext_resource type="Texture2D" uid="uid://bhxeiqd6ibp5f" path="res://download.png" id="1_yg0ck"]
+[ext_resource type="PackedScene" uid="uid://cq0b0057gaf03" path="res://scene_transition.tscn" id="3_s61e2"]
+[ext_resource type="PackedScene" uid="uid://cg7c78kxt6wy3" path="res://Hallway.tscn" id="4_43mqm"]
+[ext_resource type="PackedScene" uid="uid://bjbi36jcc8t7i" path="res://Derek.tscn" id="5_l2byu"]
+[ext_resource type="Script" uid="uid://cy60e2n6gnc5k" path="res://InteractableItem.gd" id="6_c5ecd"]
+[ext_resource type="Script" uid="uid://d2x8a328pj72r" path="res://dialogue_box.gd" id="6_jnykq"]
+[ext_resource type="Texture2D" uid="uid://s6cq45rxtjen" path="res://PRESSE.png" id="6_l4cab"]
+[ext_resource type="PackedScene" uid="uid://ddtgw1ry3mwbf" path="res://Interactable.tscn" id="8_s61e2"]
+[ext_resource type="PackedScene" uid="uid://d32m6emiietwb" path="res://InventoryUI.tscn" id="9_43mqm"]
+[ext_resource type="Texture2D" uid="uid://b5ry48sppriq1" path="res://messages/controls-removebg-preview.png" id="10_l2byu"]
+[ext_resource type="Texture2D" uid="uid://naiuf5gcs6h0" path="res://messages/image-removebg-preview (8).png" id="11_jnykq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgr22"]
+size = Vector2(31, 1076.3694)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0du0"]
+size = Vector2(76, 79)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uu6xs"]
+size = Vector2(1124, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dxm6"]
+size = Vector2(30.5, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4cab"]
+size = Vector2(106, 82.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3e05k"]
+size = Vector2(61, 61)
+
+[node name="Main" type="Node2D"]
+position = Vector2(4, -1)
+
+[node name="DereksRoom" type="Sprite2D" parent="."]
+texture_filter = 3
+position = Vector2(187.99998, 258)
+scale = Vector2(0.416, 0.4)
+texture = ExtResource("1_yg0ck")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DereksRoom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DereksRoom/StaticBody2D"]
+position = Vector2(949.5652, 0.8982849)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_lgr22")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DereksRoom/StaticBody2D"]
+position = Vector2(-951.3043, -3.6180182)
+shape = SubResource("RectangleShape2D_lgr22")
+
+[node name="TestSign" type="Area2D" parent="."]
+position = Vector2(480, 225)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestSign"]
+position = Vector2(-405, -139)
+shape = SubResource("RectangleShape2D_r0du0")
+
+[node name="ColorRect" type="ColorRect" parent="TestSign"]
+visible = false
+offset_left = -171.0
+offset_top = -55.0
+offset_right = -94.0
+offset_bottom = 28.0
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(15, 366)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(256, 130)
+shape = SubResource("RectangleShape2D_uu6xs")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_left = -313.0
+offset_top = 329.0
+offset_right = 851.0
+offset_bottom = 392.0
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+position = Vector2(348, -276)
+shape = SubResource("RectangleShape2D_3dxm6")
+
+[node name="TesItem" type="Area2D" parent="."]
+position = Vector2(783, -176)
+script = ExtResource("6_c5ecd")
+item_type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TesItem"]
+position = Vector2(-25, 299)
+shape = SubResource("RectangleShape2D_l4cab")
+
+[node name="Sprite2D" type="Sprite2D" parent="TesItem"]
+position = Vector2(-22.000002, 295)
+scale = Vector2(0.20695366, 0.21979864)
+texture = ExtResource("6_l4cab")
+
+[node name="SceneTransition" parent="." instance=ExtResource("3_s61e2")]
+visible = false
+position = Vector2(451, 236)
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+target_scene = ExtResource("4_43mqm")
+
+[node name="Derek" parent="." instance=ExtResource("5_l2byu")]
+position = Vector2(-98, 371)
+collision_layer = 2
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DialogueBox" type="Panel" parent="UI"]
+visible = false
+offset_left = 56.0
+offset_top = 400.0
+offset_right = 726.0
+offset_bottom = 541.0
+script = ExtResource("6_jnykq")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextDisplay" type="RichTextLabel" parent="UI/DialogueBox"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 13.0
+offset_right = 654.0
+offset_bottom = 140.0
+
+[node name="SpawnPoint" type="Marker2D" parent="."]
+position = Vector2(177, 287)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(199, 236)
+zoom = Vector2(1.3, 1.3)
+
+[node name="Interactable" parent="." instance=ExtResource("8_s61e2")]
+position = Vector2(-178, -115)
+
+[node name="InventoryUI" parent="." instance=ExtResource("9_43mqm")]
+offset_left = -95.0
+offset_top = 37.0
+offset_right = -95.0
+offset_bottom = 37.0
+
+[node name="ControlsRemovebgPreview" type="Sprite2D" parent="."]
+position = Vector2(140.75, 96)
+scale = Vector2(0.55128205, 0.7011494)
+texture = ExtResource("10_l2byu")
+
+[node name="ImageRemovebgPreview(8)" type="Sprite2D" parent="."]
+modulate = Color(0.43137255, 0.43137255, 0.43137255, 0.22745098)
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(177, 362)
+scale = Vector2(0.09217877, 0.093659945)
+texture = ExtResource("11_jnykq")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("6_c5ecd")
+item_type = 1
+item_name = "Backpack"
+
+[node name="Backpack" type="Sprite2D" parent="Area2D"]
+texture_filter = 1
+position = Vector2(171, 365)
+scale = Vector2(0.09217877, 0.093659945)
+texture = ExtResource("11_jnykq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(171, 357)
+shape = SubResource("RectangleShape2D_3e05k")

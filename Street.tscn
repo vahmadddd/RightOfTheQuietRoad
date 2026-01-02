@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1umcl53mumw"]
+
+[ext_resource type="Texture2D" uid="uid://jymbwnuy0fdr" path="res://download (8).png" id="1_kpbgp"]
+[ext_resource type="PackedScene" uid="uid://bjbi36jcc8t7i" path="res://Derek.tscn" id="2_7iaks"]
+[ext_resource type="PackedScene" uid="uid://cq0b0057gaf03" path="res://scene_transition.tscn" id="3_7iaks"]
+[ext_resource type="PackedScene" uid="uid://dqml48d5esxj3" path="res://QuietRoad.tscn" id="4_hno7y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hno7y"]
+size = Vector2(162.84065, 1334.1047)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dx7jg"]
+size = Vector2(3837, 150.5)
+
+[node name="Street" type="Node2D"]
+
+[node name="Hallway" type="Sprite2D" parent="."]
+texture_filter = 3
+texture_repeat = 2
+position = Vector2(45, 231.99998)
+scale = Vector2(2, 2.2)
+texture = ExtResource("1_kpbgp")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Hallway"]
+position = Vector2(-21, 30.454552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(-1029.6019, 53.388245)
+scale = Vector2(0.9999997, 0.99999976)
+shape = SubResource("RectangleShape2D_hno7y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hallway/StaticBody2D"]
+position = Vector2(1010.03705, 13.347092)
+scale = Vector2(0.9999993, 0.9999995)
+shape = SubResource("RectangleShape2D_hno7y")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(6.540039, 339.75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(40.95996, 361.25)
+shape = SubResource("RectangleShape2D_dx7jg")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+visible = false
+offset_left = -460.0
+offset_top = 171.0
+offset_right = 704.0
+offset_bottom = 234.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Derek" parent="." instance=ExtResource("2_7iaks")]
+position = Vector2(-741, 546)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-37, 372)
+zoom = Vector2(0.3, 0.3)
+
+[node name="SceneTransition" parent="." instance=ExtResource("3_7iaks")]
+visible = false
+position = Vector2(1747.9999, 366)
+scale = Vector2(0.8, 0.8)
+collision_layer = 2
+target_scene = ExtResource("4_hno7y")
